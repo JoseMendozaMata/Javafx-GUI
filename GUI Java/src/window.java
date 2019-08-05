@@ -14,8 +14,11 @@ import javafx.stage.Stage;
 
 // Para utilizar los metodos de javafx
 
-public class window extends Application{
+public class window extends Application implements EventHandler<ActionEvent>{	// Eventhandler<ActionEvent>
+	// Sirve para cuando se prresione un boton ejecute el codigo del método handle
 
+	Button button;
+	
 	public static void main(String[]args) {
 		launch(args);	// Setea el prgrama como una aplicación de javafx
 	}
@@ -24,8 +27,10 @@ public class window extends Application{
 		// Main javafx code
 		primaryStage.setTitle("Main Window");
 		
-		Button button = new Button();
+		button = new Button();
 		button.setText("Clickeame?");
+		
+		button.setOnAction(this);	// Busca handle en esta clase y lo ejecuta, por eso el this
 		
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);
@@ -33,5 +38,12 @@ public class window extends Application{
 		Scene scene = new Scene(layout, 500,500);	// Sintaxis: Scene(layout(contenedor), width, height)
 		primaryStage.setScene(scene);
 		primaryStage.show();		// Mostrar 
+	}
+	public void handle(ActionEvent event) {		// código que se encarga de los eventos
+		if(event.getSource() == button) {		// Que boton o código hace que se ejecute esta acción, sirve para identificar
+			// que boton ejecuta qué código
+			System.out.println("Bro");
+			
+		}
 	}
 }
