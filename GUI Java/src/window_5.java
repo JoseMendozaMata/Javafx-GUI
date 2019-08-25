@@ -19,7 +19,11 @@ public class window_5 extends Application{
 		window.setTitle("Muchas ventanas");
 		
 		Button button = new Button("Click para abrir otra ventana");
-		button.setOnAction(e -> AlertBox_5.display("Error", "Bro"));
+		button.setOnAction(e -> 
+		{
+			boolean result = ConfirmationBox.display("Cnfirmar","Está seguro?");
+			System.out.println(result);
+		});
 		
 		StackPane layout = new StackPane();
 		layout.getChildren().add(button);
